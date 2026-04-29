@@ -1,0 +1,49 @@
+spring:
+  application:
+    name: nexfly-api
+
+  datasource:
+    url: jdbc:postgresql://ep-nameless-credit-a4mnet9d.us-east-1.aws.neon.tech/neondb?sslmode=require
+    username: neondb_owner
+    password: npg_1MdCj7agBzmu
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 5
+      minimum-idle: 2
+      connection-timeout: 30000
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    open-in-view: false
+    defer-datasource-initialization: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  sql:
+    init:
+      mode: always
+      continue-on-error: true
+
+server:
+  port: 8080
+
+app:
+  jwt:
+    secret: NexFly2024SuperSecretKeyForJWTTokenSigningMustBe256BitsLong!!
+    expiration-ms: 86400000  # 24 hours
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+
+logging:
+  level:
+    com.nexfly: DEBUG
+    org.hibernate.SQL: WARN

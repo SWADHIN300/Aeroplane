@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NexFly - My Bookings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#141218",
+                        "on-secondary": "#342b4b",
+                        "primary-container": "#6750a4",
+                        "on-background": "#e6e0e9",
+                        "on-primary-fixed-variant": "#4f378a",
+                        "inverse-primary": "#6750a4",
+                        "background": "#141218",
+                        "on-primary-fixed": "#22005d",
+                        "on-primary-container": "#e0d2ff",
+                        "inverse-surface": "#e6e0e9",
+                        "surface-container-highest": "#36343a",
+                        "on-surface": "#e6e0e9",
+                        "secondary-fixed": "#e9ddff",
+                        "on-error": "#690005",
+                        "surface-bright": "#3b383e",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-container": "#c9a74d",
+                        "on-tertiary-container": "#503d00",
+                        "on-primary": "#381e72",
+                        "tertiary": "#e7c365",
+                        "surface-tint": "#cfbcff",
+                        "primary-fixed": "#e9ddff",
+                        "surface-variant": "#36343a",
+                        "surface-container-lowest": "#0f0d13",
+                        "primary": "#cfbcff",
+                        "outline": "#948e9c",
+                        "on-tertiary-fixed": "#241a00",
+                        "secondary": "#cdc0e9",
+                        "tertiary-fixed-dim": "#e7c365",
+                        "on-tertiary": "#3e2e00",
+                        "primary-fixed-dim": "#cfbcff",
+                        "inverse-on-surface": "#322f35",
+                        "secondary-fixed-dim": "#cdc0e9",
+                        "on-secondary-container": "#bfb2da",
+                        "surface-container-high": "#2b292f",
+                        "error": "#ffb4ab",
+                        "secondary-container": "#4d4465",
+                        "error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#4b4263",
+                        "surface-container": "#211f24",
+                        "surface-container-low": "#1d1b20",
+                        "outline-variant": "#494551",
+                        "surface": "#141218",
+                        "tertiary-fixed": "#ffdf93",
+                        "on-secondary-fixed": "#1f1635",
+                        "on-tertiary-fixed-variant": "#594400",
+                        "on-surface-variant": "#cbc4d2"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "stack-sm": "12px",
+                        "stack-lg": "48px",
+                        "gutter": "24px",
+                        "stack-md": "24px",
+                        "container-max": "1440px",
+                        "unit": "8px",
+                        "margin-page": "64px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Space Grotesk"],
+                        "data-mono": ["Space Grotesk"],
+                        "h2": ["Space Grotesk"],
+                        "h3": ["Space Grotesk"],
+                        "body-lg": ["Inter"],
+                        "h1": ["Space Grotesk"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.15em", "fontWeight": "600"}],
+                        "data-mono": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "400"}],
+                        "h2": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "h3": ["32px", {"lineHeight": "1.3", "letterSpacing": "0em", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400"}],
+                        "h1": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #050b1a;
+            color: #e6e0e9;
+        }
+        .glass-card {
+            background: rgba(0, 212, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 245, 255, 0.2);
+        }
+        .cyan-glow {
+            box-shadow: 0 0 15px rgba(0, 245, 255, 0.3);
+        }
+        .green-glow-badge {
+            box-shadow: 0 0 10px rgba(74, 222, 128, 0.3);
+            border: 1px solid rgba(74, 222, 128, 0.4);
+        }
+        .cyan-outline-btn {
+            border: 1px solid #22d3ee;
+            color: #22d3ee;
+        }
+        .red-outline-btn {
+            border: 1px solid #f87171;
+            color: #f87171;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(0, 245, 255, 0.3);
+        }
+    </style>
+</head>
+<body class="font-body-md bg-[#050b1a]">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 border-b border-white/10 bg-[#050b1a]/80 backdrop-blur-[20px] shadow-[0_0_20px_rgba(0,212,255,0.05)]">
+<div class="flex justify-between items-center w-full px-16 py-4 max-w-[1440px] mx-auto font-['Space_Grotesk'] font-medium tracking-wider">
+<div class="text-2xl font-bold text-cyan-400 drop-shadow-[0_0_10px_rgba(0,245,255,0.5)] flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="rocket_launch">rocket_launch</span>
+                NexFly
+            </div>
+<div class="hidden md:flex gap-8">
+<a class="text-slate-300 hover:text-cyan-200 transition-colors" href="#">Home</a>
+<a class="text-slate-300 hover:text-cyan-200 transition-colors" href="#">Flights</a>
+<a class="text-cyan-400 border-b-2 border-cyan-400 pb-1" href="#">My Bookings</a>
+<a class="text-slate-300 hover:text-cyan-200 transition-colors" href="#">About</a>
+</div>
+<div class="flex gap-4">
+<button class="px-6 py-2 border border-cyan-500/30 text-cyan-400 hover:bg-cyan-400/10 transition-all cursor-pointer">Login</button>
+<button class="px-6 py-2 bg-cyan-400 text-[#050b1a] font-bold hover:bg-cyan-300 transition-all active:scale-95">Register</button>
+</div>
+</div>
+</nav>
+<main class="pt-32 pb-16 px-16 max-w-[1440px] mx-auto min-h-screen">
+<!-- Header Section -->
+<div class="flex items-center justify-between mb-12">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-cyan-400 text-4xl" data-icon="flight_takeoff">flight_takeoff</span>
+<h1 class="font-h1 text-h1 text-on-background">My Flights</h1>
+</div>
+<!-- Tab Switcher -->
+<div class="flex glass-card p-1 rounded-lg">
+<button class="px-8 py-2 font-label-caps text-label-caps text-cyan-400 border-b-2 border-cyan-400 transition-all">Upcoming</button>
+<button class="px-8 py-2 font-label-caps text-label-caps text-slate-500 hover:text-cyan-200 transition-all">Completed</button>
+<button class="px-8 py-2 font-label-caps text-label-caps text-slate-500 hover:text-cyan-200 transition-all">Cancelled</button>
+</div>
+</div>
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Timeline Sidebar -->
+<aside class="col-span-12 lg:col-span-3">
+<div class="glass-card p-6 sticky top-32">
+<h3 class="font-h3 text-h3 mb-6 text-on-background">Flight Journey</h3>
+<div class="relative pl-8 border-l border-white/10 space-y-12">
+<div class="relative">
+<div class="absolute -left-[37px] top-1 w-4 h-4 bg-cyan-400 rounded-full border-4 border-[#050b1a] cyan-glow"></div>
+<p class="font-label-caps text-label-caps text-cyan-400 mb-1">DEPARTURE</p>
+<p class="font-h3 text-[20px] leading-tight mb-1">New Delhi</p>
+<p class="text-slate-400 text-sm">Indira Gandhi Intl (DEL)</p>
+<p class="font-data-mono text-data-mono text-cyan-200 mt-2">14:20 • NOV 24</p>
+</div>
+<div class="relative">
+<div class="absolute -left-[37px] top-1 w-4 h-4 bg-slate-600 rounded-full border-4 border-[#050b1a]"></div>
+<p class="font-label-caps text-label-caps text-slate-500 mb-1">DURATION</p>
+<p class="font-h3 text-[20px] leading-tight mb-1">2h 15m</p>
+<p class="text-slate-400 text-sm">Non-stop Flight</p>
+</div>
+<div class="relative">
+<div class="absolute -left-[37px] top-1 w-4 h-4 bg-cyan-400 rounded-full border-4 border-[#050b1a] cyan-glow"></div>
+<p class="font-label-caps text-label-caps text-cyan-400 mb-1">ARRIVAL</p>
+<p class="font-h3 text-[20px] leading-tight mb-1">Mumbai</p>
+<p class="text-slate-400 text-sm">Chhatrapati Shivaji (BOM)</p>
+<p class="font-data-mono text-data-mono text-cyan-200 mt-2">16:35 • NOV 24</p>
+</div>
+</div>
+<div class="mt-12 pt-8 border-t border-white/10">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-cyan-400" data-icon="support_agent">support_agent</span>
+<p class="font-body-md text-on-surface">Concierge Service</p>
+</div>
+<p class="text-sm text-slate-500 mb-4">Your personal aviation assistant is available 24/7 for any modifications.</p>
+<button class="w-full py-2 cyan-outline-btn font-label-caps text-label-caps hover:bg-cyan-400/5 transition-all">Chat Now</button>
+</div>
+</div>
+</aside>
+<!-- Bookings List -->
+<section class="col-span-12 lg:col-span-9 space-y-gutter">
+<!-- Flight Card 1 -->
+<div class="glass-card overflow-hidden transition-all hover:border-cyan-400/40">
+<div class="p-8">
+<div class="flex justify-between items-start mb-8">
+<div class="flex items-center gap-6">
+<div class="text-center">
+<h4 class="font-h3 text-h3 text-cyan-400">DEL</h4>
+<p class="text-xs text-slate-500">New Delhi</p>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-32 h-[1px] border-t border-dashed border-cyan-400/50 relative">
+<span class="material-symbols-outlined absolute left-1/2 -top-3 -translate-x-1/2 text-cyan-400 text-lg rotate-90" data-icon="flight">flight</span>
+</div>
+<span class="text-[10px] font-label-caps text-slate-400 uppercase tracking-[0.2em]">NF-802</span>
+</div>
+<div class="text-center">
+<h4 class="font-h3 text-h3 text-cyan-400">BOM</h4>
+<p class="text-xs text-slate-500">Mumbai</p>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="px-4 py-1 bg-green-400/10 text-green-400 text-[10px] font-bold tracking-widest green-glow-badge rounded-sm mb-2">CONFIRMED</span>
+<p class="font-data-mono text-data-mono text-slate-300">ID: NX-7829-AF</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 py-6 border-y border-white/5">
+<div>
+<p class="font-label-caps text-[10px] text-slate-500 mb-1">DEPARTURE DATE</p>
+<p class="font-body-lg text-on-surface">24 Nov 2024</p>
+</div>
+<div>
+<p class="font-label-caps text-[10px] text-slate-500 mb-1">TIME</p>
+<p class="font-body-lg text-on-surface">14:20 IST</p>
+</div>
+<div>
+<p class="font-label-caps text-[10px] text-slate-500 mb-1">PASSENGER</p>
+<p class="font-body-lg text-on-surface">Vikram Malhotra</p>
+</div>
+<div>
+<p class="font-label-caps text-[10px] text-slate-500 mb-1">CLASS</p>
+<p class="font-body-lg text-on-surface">First Class</p>
+</div>
+</div>
+<div class="flex justify-end gap-4 mt-8">
+<button class="px-6 py-2 red-outline-btn font-label-caps text-label-caps hover:bg-red-400/5 transition-all">Cancel</button>
+<button class="px-6 py-2 cyan-outline-btn font-label-caps text-label-caps hover:bg-cyan-400/5 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="confirmation_number">confirmation_number</span>
+                                View Ticket
+                            </button>
+</div>
+</div>
+</div>
+<!-- Flight Card 2 -->
+<div class="glass-card overflow-hidden opacity-80 transition-all hover:opacity-100 hover:border-cyan-400/40">
+<div class="p-8">
+<div class="flex justify-between items-start mb-8">
+<div class="flex items-center gap-6">
+<div class="text-center">
+<h4 class="font-h3 text-h3 text-cyan-400">DXB</h4>
+<p class="text-xs text-slate-500">Dubai</p>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-32 h-[1px] border-t border-dashed border-white/20 relative">
+<span class="material-symbols-outlined absolute left-1/2 -top-3 -translate-x-1/2 text-slate-500 text-lg rotate-90" data-icon="flight">flight</span>
+</div>
+<span class="text-[10px] font-label-caps text-slate-400 uppercase tracking-[0.2em]">NF-104</span>
+</div>
+<div class="text-center">
+<h4 class="font-h3 text-h3 text-cyan-400">LHR</h4>
+<p class="text-xs text-slate-500">London</p>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="px-4 py-1 bg-green-400/10 text-green-400 text-[10px] font-bold tracking-widest green-glow-badge rounded-sm mb-2">CONFIRMED</span>
+<p class="font-data-mono text-data-mono text-slate-300">ID: NX-1120-XQ</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 py-6 border-y border-white/5">
+<div>
+<p class="font-label-caps text-[10px] text-slate-500 mb-1">DEPARTURE DATE</p>
+<p class="font-body-lg text-on-surface">12 Dec 2024</p>
+</div>
+<div>
+<p class="font-label-caps text-[10px] text-slate-500 mb-1">TIME</p>
+<p class="font-body-lg text-on-surface">09:15 GST</p>
+</div>
+<div>
+<p class="font-label-caps text-[10px] text-slate-500 mb-1">PASSENGER</p>
+<p class="font-body-lg text-on-surface">Vikram Malhotra</p>
+</div>
+<div>
+<p class="font-label-caps text-[10px] text-slate-500 mb-1">CLASS</p>
+<p class="font-body-lg text-on-surface">Business Executive</p>
+</div>
+</div>
+<div class="flex justify-end gap-4 mt-8">
+<button class="px-6 py-2 red-outline-btn font-label-caps text-label-caps hover:bg-red-400/5 transition-all">Cancel</button>
+<button class="px-6 py-2 cyan-outline-btn font-label-caps text-label-caps hover:bg-cyan-400/5 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="confirmation_number">confirmation_number</span>
+                                View Ticket
+                            </button>
+</div>
+</div>
+</div>
+<!-- Empty State Suggestion or Upgrade -->
+<div class="relative h-48 rounded-lg overflow-hidden glass-card flex items-center justify-center">
+<img alt="Private Jet Wing" class="absolute inset-0 w-full h-full object-cover opacity-20" data-alt="close-up of a sleek silver private jet wing against a deep blue dusk sky with city lights below" src="https://lh3.googleusercontent.com/aida-public/AB6AXuArD76d_nQ3PHEuby_mY2AnAVFmvSr_83caYpjG-aYbULA419KdWpM00CaoTPNroXH6jEVRlMMdjCkyRjkqT7X8X4r-p5s6raZSelx8IVjBkd_-3TRsuC6j2pJkzTwCK364Te_qLyzx6kr_riOd9D9-eQpPo-WfE5ESqhDyMPMAubxZznkCBx_kRXnlA0eoYazTIxqXij4Lf5RBKPxx5GN7bPgTg1ElEZbZ_lUiQZ-mlnwfiTSciQt3JSP3r8L3SbjHg5tkXBFue3IB"/>
+<div class="relative z-10 text-center">
+<p class="font-h3 text-h3 text-on-background mb-2">Exclusive Fleet Upgrade</p>
+<p class="text-slate-400 mb-4">Upgrade your next flight to our new Ultra-Long Range G700 series.</p>
+<button class="px-8 py-2 bg-cyan-400 text-[#050b1a] font-bold hover:bg-cyan-300 transition-all">Explore Fleet</button>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full border-t border-cyan-900/50 bg-[#050b1a]">
+<div class="flex flex-col md:flex-row justify-between items-center px-16 py-12 w-full max-w-[1440px] mx-auto font-['Space_Grotesk'] text-sm tracking-wide">
+<div class="mb-8 md:mb-0">
+<div class="text-xl font-black text-cyan-400 uppercase mb-4">NexFly</div>
+<p class="text-slate-500 max-w-xs">Elevating private aviation with cutting-edge technology and unparalleled service.</p>
+</div>
+<div class="flex gap-12 text-slate-500">
+<a class="hover:text-cyan-400 hover:drop-shadow-[0_0_5px_rgba(0,245,255,0.6)] transition-all" href="#">About</a>
+<a class="hover:text-cyan-400 hover:drop-shadow-[0_0_5px_rgba(0,245,255,0.6)] transition-all" href="#">Contact</a>
+<a class="hover:text-cyan-400 hover:drop-shadow-[0_0_5px_rgba(0,245,255,0.6)] transition-all" href="#">Privacy</a>
+<a class="hover:text-cyan-400 hover:drop-shadow-[0_0_5px_rgba(0,245,255,0.6)] transition-all" href="#">Terms</a>
+</div>
+<div class="mt-8 md:mt-0 text-slate-500">
+                © 2024 NexFly. The Future of Flight.
+            </div>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NexFly | Your Journey Begins Here</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#141218",
+                        "on-secondary": "#342b4b",
+                        "primary-container": "#6750a4",
+                        "on-background": "#e6e0e9",
+                        "on-primary-fixed-variant": "#4f378a",
+                        "inverse-primary": "#6750a4",
+                        "background": "#141218",
+                        "on-primary-fixed": "#22005d",
+                        "on-primary-container": "#e0d2ff",
+                        "inverse-surface": "#e6e0e9",
+                        "surface-container-highest": "#36343a",
+                        "on-surface": "#e6e0e9",
+                        "secondary-fixed": "#e9ddff",
+                        "on-error": "#690005",
+                        "surface-bright": "#3b383e",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-container": "#c9a74d",
+                        "on-tertiary-container": "#503d00",
+                        "on-primary": "#381e72",
+                        "tertiary": "#e7c365",
+                        "surface-tint": "#cfbcff",
+                        "primary-fixed": "#e9ddff",
+                        "surface-variant": "#36343a",
+                        "surface-container-lowest": "#0f0d13",
+                        "primary": "#cfbcff",
+                        "outline": "#948e9c",
+                        "on-tertiary-fixed": "#241a00",
+                        "secondary": "#cdc0e9",
+                        "tertiary-fixed-dim": "#e7c365",
+                        "on-tertiary": "#3e2e00",
+                        "primary-fixed-dim": "#cfbcff",
+                        "inverse-on-surface": "#322f35",
+                        "secondary-fixed-dim": "#cdc0e9",
+                        "on-secondary-container": "#bfb2da",
+                        "surface-container-high": "#2b292f",
+                        "error": "#ffb4ab",
+                        "secondary-container": "#4d4465",
+                        "error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#4b4263",
+                        "surface-container": "#211f24",
+                        "surface-container-low": "#1d1b20",
+                        "outline-variant": "#494551",
+                        "surface": "#141218",
+                        "tertiary-fixed": "#ffdf93",
+                        "on-secondary-fixed": "#1f1635",
+                        "on-tertiary-fixed-variant": "#594400",
+                        "on-surface-variant": "#cbc4d2"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "stack-sm": "12px",
+                        "stack-lg": "48px",
+                        "gutter": "24px",
+                        "stack-md": "24px",
+                        "container-max": "1440px",
+                        "unit": "8px",
+                        "margin-page": "64px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Space Grotesk"],
+                        "data-mono": ["Space Grotesk"],
+                        "h2": ["Space Grotesk"],
+                        "h3": ["Space Grotesk"],
+                        "body-lg": ["Inter"],
+                        "h1": ["Space Grotesk"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.15em", "fontWeight": "600"}],
+                        "data-mono": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "400"}],
+                        "h2": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "h3": ["32px", {"lineHeight": "1.3", "letterSpacing": "0em", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400"}],
+                        "h1": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background: linear-gradient(180deg, #050b1a 0%, #0d2137 100%);
+            min-height: 100vh;
+        }
+        .glass-panel {
+            background: rgba(0, 212, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+        }
+        .cyan-glow {
+            text-shadow: 0 0 15px rgba(0, 245, 255, 0.4);
+        }
+        .box-glow {
+            box-shadow: 0 0 20px rgba(0, 245, 255, 0.15);
+        }
+        .cyan-contrail {
+            background: linear-gradient(90deg, rgba(0, 245, 255, 0) 0%, rgba(0, 245, 255, 0.5) 50%, rgba(0, 245, 255, 0) 100%);
+            height: 2px;
+            width: 300px;
+            filter: blur(4px);
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface selection:bg-primary selection:text-on-primary">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 border-b border-cyan-500/20 bg-[#050b1a]/80 backdrop-blur-[20px] shadow-[0_0_20px_rgba(0,212,255,0.05)]">
+<div class="flex justify-between items-center w-full px-16 py-4 max-w-[1440px] mx-auto">
+<div class="text-2xl font-bold text-cyan-400 drop-shadow-[0_0_10px_rgba(0,245,255,0.5)] flex items-center gap-2 font-['Space_Grotesk']">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">rocket_launch</span>
+                NexFly
+            </div>
+<div class="hidden md:flex items-center gap-8">
+<a class="font-['Space_Grotesk'] font-medium tracking-wider text-cyan-400 border-b-2 border-cyan-400 pb-1" href="#">Home</a>
+<a class="font-['Space_Grotesk'] font-medium tracking-wider text-slate-300 hover:text-cyan-200 transition-colors" href="#">Flights</a>
+<a class="font-['Space_Grotesk'] font-medium tracking-wider text-slate-300 hover:text-cyan-200 transition-colors" href="#">My Bookings</a>
+<a class="font-['Space_Grotesk'] font-medium tracking-wider text-slate-300 hover:text-cyan-200 transition-colors" href="#">About</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="px-6 py-2 font-['Space_Grotesk'] font-medium tracking-wider text-slate-300 hover:text-cyan-200 transition-colors active:scale-95 duration-200">Login</button>
+<button class="px-6 py-2 font-['Space_Grotesk'] font-medium tracking-wider bg-cyan-400 text-slate-900 font-bold hover:opacity-80 transition-opacity active:scale-95 duration-200 rounded-lg">Register</button>
+</div>
+</div>
+</nav>
+<main class="pt-24 overflow-x-hidden">
+<!-- Hero Section -->
+<section class="relative min-h-[870px] flex flex-col items-center justify-center px-16 max-w-[1440px] mx-auto">
+<!-- Animated Plane Visualization (Static representation of 3D) -->
+<div class="absolute top-1/4 -right-20 pointer-events-none opacity-40 md:opacity-80">
+<div class="relative">
+<img class="w-[600px] h-auto object-contain transform rotate-[-5deg]" data-alt="3D render of a futuristic sleek private jet in profile view with metallic silver finish and glowing blue engines" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjS3cDB0jzCFDH870Un9W24ncgjETmavjk3LD52NrKwchuhS5I0qgcd-zryZc-VVQqf_iqHXgsZSOEPPo_tLb-H9oesGgSbZxjvbPuXljdfHpJFaH0SETINEegpsNfVdjPwabKrxqwbhFRZXExftsG1P_3raDSi-4-PkrZEagnpM01ZBn4W1wrcD1IC-oq6w_bYVOeIfxi3-NJGUKCNrDqrG32MXnNYWZ2scWOxKeeC_Am918kwDBGpFIdRE_Me-MfepsYN_WU8tjl"/>
+<div class="absolute top-1/2 right-full cyan-contrail"></div>
+</div>
+</div>
+<!-- Content -->
+<div class="relative z-10 w-full text-left">
+<h1 class="font-h1 text-h1 text-white mb-stack-sm max-w-2xl cyan-glow">
+                    Your Journey <br/>Begins Here
+                </h1>
+<p class="font-body-lg text-body-lg text-outline mb-stack-lg max-w-lg">
+                    Experience the pinnacle of private aviation. Book direct flights to over 150 countries with NexFly's elite fleet.
+                </p>
+<!-- Floating Search Bar -->
+<div class="glass-panel p-gutter rounded-xl box-glow max-w-5xl w-full flex flex-col md:flex-row gap-4 items-end mt-12">
+<div class="flex-1 w-full space-y-2">
+<label class="font-label-caps text-label-caps text-cyan-400 flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px]">flight_takeoff</span> FROM
+                        </label>
+<input class="w-full bg-[#050b1a] border border-outline-variant text-on-surface rounded focus:ring-1 focus:ring-cyan-400 focus:border-cyan-400 p-3" placeholder="New York (JFK)" type="text"/>
+</div>
+<button class="bg-cyan-500/10 border border-cyan-400/30 p-3 rounded text-cyan-400 hover:bg-cyan-400/20 transition-all self-center md:mt-6">
+<span class="material-symbols-outlined">swap_horiz</span>
+</button>
+<div class="flex-1 w-full space-y-2">
+<label class="font-label-caps text-label-caps text-cyan-400 flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px]">flight_land</span> TO
+                        </label>
+<input class="w-full bg-[#050b1a] border border-outline-variant text-on-surface rounded focus:ring-1 focus:ring-cyan-400 focus:border-cyan-400 p-3" placeholder="London (LHR)" type="text"/>
+</div>
+<div class="w-full md:w-48 space-y-2">
+<label class="font-label-caps text-label-caps text-cyan-400 flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px]">calendar_today</span> DATE
+                        </label>
+<input class="w-full bg-[#050b1a] border border-outline-variant text-on-surface rounded focus:ring-1 focus:ring-cyan-400 focus:border-cyan-400 p-3" type="date"/>
+</div>
+<div class="w-full md:w-40 space-y-2">
+<label class="font-label-caps text-label-caps text-cyan-400 flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px]">group</span> PASSENGERS
+                        </label>
+<select class="w-full bg-[#050b1a] border border-outline-variant text-on-surface rounded focus:ring-1 focus:ring-cyan-400 focus:border-cyan-400 p-3">
+<option>1 Adult</option>
+<option>2 Adults</option>
+<option>Group (4+)</option>
+</select>
+</div>
+<button class="w-full md:w-auto px-10 py-3 bg-gradient-to-r from-cyan-400 to-cyan-600 text-[#050b1a] font-bold rounded shadow-[0_0_20px_rgba(0,245,255,0.4)] hover:brightness-125 transition-all active:scale-95 whitespace-nowrap">
+                        SEARCH FLIGHTS
+                    </button>
+</div>
+</div>
+</section>
+<!-- Stats Section -->
+<section class="py-stack-lg px-16 max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div class="glass-panel p-stack-md rounded border-t-2 border-t-cyan-400 flex flex-col items-center text-center">
+<span class="font-h3 text-h3 text-white mb-2">500+</span>
+<span class="font-label-caps text-label-caps text-outline">Airlines</span>
+</div>
+<div class="glass-panel p-stack-md rounded border-t-2 border-t-cyan-400 flex flex-col items-center text-center">
+<span class="font-h3 text-h3 text-white mb-2">150+</span>
+<span class="font-label-caps text-label-caps text-outline">Countries</span>
+</div>
+<div class="glass-panel p-stack-md rounded border-t-2 border-t-cyan-400 flex flex-col items-center text-center">
+<span class="font-h3 text-h3 text-white mb-2">2M+</span>
+<span class="font-label-caps text-label-caps text-outline">Travelers</span>
+</div>
+<div class="glass-panel p-stack-md rounded border-t-2 border-t-cyan-400 flex flex-col items-center text-center">
+<div class="flex items-center gap-2 mb-2">
+<span class="font-h3 text-h3 text-white">4.9</span>
+<span class="material-symbols-outlined text-cyan-400" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<span class="font-label-caps text-label-caps text-outline">Rating</span>
+</div>
+</section>
+<!-- Popular Destinations -->
+<section class="py-stack-lg px-16 max-w-[1440px] mx-auto mb-stack-lg">
+<div class="flex justify-between items-end mb-stack-md">
+<div>
+<span class="font-label-caps text-label-caps text-cyan-400">EXPLORE THE GLOBE</span>
+<h2 class="font-h2 text-h2 text-white">Popular Destinations</h2>
+</div>
+<div class="flex gap-2">
+<button class="p-2 border border-outline-variant text-outline hover:text-cyan-400 hover:border-cyan-400 transition-all">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<button class="p-2 border border-outline-variant text-outline hover:text-cyan-400 hover:border-cyan-400 transition-all">
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="flex overflow-x-auto gap-gutter pb-8 no-scrollbar">
+<!-- Destination Card 1 -->
+<div class="min-w-[320px] group cursor-pointer">
+<div class="relative h-[400px] rounded-xl overflow-hidden glass-panel transform group-hover:-translate-y-2 group-hover:shadow-[0_15px_30px_rgba(0,245,255,0.2)] transition-all duration-300">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Modern skyline of Dubai at dusk with Burj Khalifa towering over glowing city lights and purple sky" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1JjpvLibaeCOMwl3jkBph8y_zHT4InyhpHLAqSFElYbIv_XVoXMT3aiMzfg69Xe397EdFUeQe6FHAZqEkg8fF_v0M5QF9FyA5G5DEKJcLHwqcCjE8Nyae4goBg8rQ-VvASGA9qrlbjS9jEARWuU16b_vzGxTH-GbwN_FFC4YTeO1DMTwqYVx_ixV8xDT4ppyE-YzyitUy6TWTMPZvBbASEyK1QqJZzedwfqP566sREiXsunv1Y-TBiVoV7FzRTOvOvsmRWy3CKbmX"/>
+<div class="absolute inset-0 bg-gradient-to-t from-[#050b1a] via-transparent to-transparent opacity-80"></div>
+<div class="absolute bottom-0 left-0 p-gutter w-full">
+<span class="font-label-caps text-label-caps text-cyan-400 mb-2 block">EMIRATES</span>
+<h3 class="font-h3 text-h3 text-white">Dubai</h3>
+<div class="flex justify-between items-center mt-4">
+<span class="text-on-surface font-medium">Starting at</span>
+<span class="text-cyan-400 font-bold">$1,200</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Destination Card 2 -->
+<div class="min-w-[320px] group cursor-pointer">
+<div class="relative h-[400px] rounded-xl overflow-hidden glass-panel transform group-hover:-translate-y-2 group-hover:shadow-[0_15px_30px_rgba(0,245,255,0.2)] transition-all duration-300">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Futuristic Marina Bay Sands in Singapore with Supertree Grove glowing in electric blue and purple neon light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcdYQQ8PftyBLlmkIXvrcz1z9QYbzEf3HIk4PDbsrOnsfauN6z72irD-ry8dUD0l3iMfkhbnHGhHs1Dh_q9sFVBpJovpytpR3YFOr86A1nC1iHCOu86d9wMfv2eIixM8ENl4TmapqScjoMgdQGJeTvPJVo1spgRBJzUl7zwpfn79oK-u4hHPCqQvrvWH61P4hTpB5i_YtFQbbBPTMzR9MmY6NwZavzMjR6_MZ6hp8pbo64ZZckUuoL3vcPOGu9bX5lgmPbOz187zvT"/>
+<div class="absolute inset-0 bg-gradient-to-t from-[#050b1a] via-transparent to-transparent opacity-80"></div>
+<div class="absolute bottom-0 left-0 p-gutter w-full">
+<span class="font-label-caps text-label-caps text-cyan-400 mb-2 block">ASIA</span>
+<h3 class="font-h3 text-h3 text-white">Singapore</h3>
+<div class="flex justify-between items-center mt-4">
+<span class="text-on-surface font-medium">Starting at</span>
+<span class="text-cyan-400 font-bold">$950</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Destination Card 3 -->
+<div class="min-w-[320px] group cursor-pointer">
+<div class="relative h-[400px] rounded-xl overflow-hidden glass-panel transform group-hover:-translate-y-2 group-hover:shadow-[0_15px_30px_rgba(0,245,255,0.2)] transition-all duration-300">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Busy Tokyo street crossing at night with bright neon signs and light trails from moving vehicles" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkKFx0fEAqYMxpPoM8_3h8TUucZi1CltcLFX10gJh2Ol0tQcAZS4iObHMwVMDeRqb-7AwMBGivDWvx2pDV3aomGeaO3tFeUZOBlq_b5ofJ2Ut8nSwlmMSmUG8iSZgxuSmCxvFWjiKdTyUvoWXddHc1sG06MOdevvlZn9-5utL3umsBPSx9kddNwvK2gA2kCWZTSyMrOjKQ7FKbmLn0zPZjNncE9q_FIJ_jtSf2jLaRA00kP2d4a8maOmfcf52ZHn3VH67jcgROdvtk"/>
+<div class="absolute inset-0 bg-gradient-to-t from-[#050b1a] via-transparent to-transparent opacity-80"></div>
+<div class="absolute bottom-0 left-0 p-gutter w-full">
+<span class="font-label-caps text-label-caps text-cyan-400 mb-2 block">JAPAN</span>
+<h3 class="font-h3 text-h3 text-white">Tokyo</h3>
+<div class="flex justify-between items-center mt-4">
+<span class="text-on-surface font-medium">Starting at</span>
+<span class="text-cyan-400 font-bold">$1,100</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Destination Card 4 -->
+<div class="min-w-[320px] group cursor-pointer">
+<div class="relative h-[400px] rounded-xl overflow-hidden glass-panel transform group-hover:-translate-y-2 group-hover:shadow-[0_15px_30px_rgba(0,245,255,0.2)] transition-all duration-300">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Traditional pagoda temple in Kyoto surrounded by blooming cherry blossoms with a soft pink atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnmKv7nxkQnyJbb6mlkPpwitUGDVwQvwYOF7p2S3-rJwsMB2tmMK-DpWvpatTHwY6oAbPwnkQbeezfdJmXBowAARZTqsKP0S7KL-6mlSUDxuyVi__lI-IXwBrMEudIBp8Z3kOg6On_5H9KmF8Junh86tvLqU7cR1rjIJZjG_QaiSslId7ZHSTuUW3ub2KAqspqZv2vrtUr3Y_Tqsfewy2mW4zINR9yb3nacIfytDjl5oyuZKNNXvT1vu_ggNliBhC6VV7FofcpyLR7"/>
+<div class="absolute inset-0 bg-gradient-to-t from-[#050b1a] via-transparent to-transparent opacity-80"></div>
+<div class="absolute bottom-0 left-0 p-gutter w-full">
+<span class="font-label-caps text-label-caps text-cyan-400 mb-2 block">CULTURE</span>
+<h3 class="font-h3 text-h3 text-white">Kyoto</h3>
+<div class="flex justify-between items-center mt-4">
+<span class="text-on-surface font-medium">Starting at</span>
+<span class="text-cyan-400 font-bold">$1,450</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full border-t border-cyan-900/50 bg-[#050b1a]">
+<div class="flex flex-col md:flex-row justify-between items-center px-16 py-12 w-full max-w-[1440px] mx-auto">
+<div class="mb-8 md:mb-0">
+<div class="text-xl font-black text-cyan-400 uppercase font-['Space_Grotesk'] mb-2">NexFly</div>
+<p class="font-['Space_Grotesk'] text-sm tracking-wide text-slate-500">© 2024 NexFly. The Future of Flight.</p>
+</div>
+<div class="flex gap-12">
+<div class="flex flex-col gap-3">
+<a class="font-['Space_Grotesk'] text-sm tracking-wide text-slate-500 hover:text-cyan-400 hover:drop-shadow-[0_0_5px_rgba(0,245,255,0.6)] transition-all" href="#">About</a>
+<a class="font-['Space_Grotesk'] text-sm tracking-wide text-slate-500 hover:text-cyan-400 hover:drop-shadow-[0_0_5px_rgba(0,245,255,0.6)] transition-all" href="#">Contact</a>
+</div>
+<div class="flex flex-col gap-3">
+<a class="font-['Space_Grotesk'] text-sm tracking-wide text-slate-500 hover:text-cyan-400 hover:drop-shadow-[0_0_5px_rgba(0,245,255,0.6)] transition-all" href="#">Privacy</a>
+<a class="font-['Space_Grotesk'] text-sm tracking-wide text-slate-500 hover:text-cyan-400 hover:drop-shadow-[0_0_5px_rgba(0,245,255,0.6)] transition-all" href="#">Terms</a>
+</div>
+</div>
+<div class="flex gap-4 mt-8 md:mt-0">
+<button class="w-10 h-10 flex items-center justify-center border border-outline-variant rounded-full text-outline hover:text-cyan-400 hover:border-cyan-400 transition-all">
+<span class="material-symbols-outlined text-[20px]">share</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center border border-outline-variant rounded-full text-outline hover:text-cyan-400 hover:border-cyan-400 transition-all">
+<span class="material-symbols-outlined text-[20px]">language</span>
+</button>
+</div>
+</div>
+</footer>
+</body></html>
