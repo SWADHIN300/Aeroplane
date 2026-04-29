@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useCurrency } from '../context/CurrencyContext'
 import api from '../services/api'
 
@@ -14,6 +15,7 @@ const fadeIn = {
 export default function AvailableFlights() {
   const [sortBy, setSortBy] = useState('price')
   const { formatPrice } = useCurrency()
+  const navigate = useNavigate()
   const [flights, setFlights] = useState([])
   const [loading, setLoading] = useState(true)
 
@@ -80,7 +82,7 @@ export default function AvailableFlights() {
                 </div>
                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center pt-4 border-t border-cyan-400/10 gap-4">
                   <div className="flex gap-4 lg:gap-6">{flight.amenities.map((a) => (<div key={a.text} className="flex items-center gap-1 text-cyan-400/60"><span className="material-symbols-outlined text-lg">{a.icon}</span><span className="text-xs data-mono uppercase">{a.text}</span></div>))}</div>
-                  <div className="flex items-center gap-4 lg:gap-6"><div className="text-right"><p className="font-mono text-2xl lg:text-3xl text-cyan-400 font-bold">{formatPrice(flight.priceINR)}</p><p className="data-mono text-[10px] text-cyan-400/40 uppercase">Incl. taxes & fees</p></div><motion.button whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="btn-primary text-sm">Book Now</motion.button></div>
+                  <div className="flex items-center gap-4 lg:gap-6"><div className="text-right"><p className="font-mono text-2xl lg:text-3xl text-cyan-400 font-bold">{formatPrice(flight.priceINR)}</p><p className="data-mono text-[10px] text-cyan-400/40 uppercase">Incl. taxes & fees</p></div><motion.button whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} onClick={() => navigate('/book', { state: { flight } })} className="btn-primary text-sm">Book Now</motion.button></div>
                 </div>
               </motion.div>
             ))}

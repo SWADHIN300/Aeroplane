@@ -7,6 +7,7 @@ import AvailableFlights from './pages/AvailableFlights'
 import AvailableCharters from './pages/AvailableCharters'
 import SeatSelection from './pages/SeatSelection'
 import MyBookings from './pages/MyBookings'
+import BookFlight from './pages/BookFlight'
 import Login from './pages/Login'
 import Register from './pages/Register'
 
@@ -24,6 +25,7 @@ function App() {
             <Route path="/charters" element={<AvailableCharters />} />
             <Route path="/seat-select" element={<SeatSelection />} />
             <Route path="/bookings" element={<MyBookings />} />
+            <Route path="/book" element={<BookFlight />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
           </Routes>
