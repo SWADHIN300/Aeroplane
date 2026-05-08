@@ -10,8 +10,8 @@ INSERT INTO destinations (id, city, region, tagline, image_url, price_inr) VALUE
 (5, 'Goa', 'INDIA', 'Sun, sand and serenity.', 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=800', 15000),
 (6, 'Jaipur', 'RAJASTHAN', 'The Pink City of kings.', 'https://images.unsplash.com/photo-1477587458883-47145ed94245?w=800', 8500),
 (7, 'Srinagar', 'KASHMIR', 'Paradise on Earth.', 'https://images.unsplash.com/photo-1587474260584-136574528ed5?w=800', 12000),
-(8, 'Varanasi', 'SPIRITUAL', 'The eternal city of light.', 'https://images.unsplash.com/photo-1561361513-2d000a50f0dc?w=800', 7500)
-ON CONFLICT (id) DO NOTHING;
+(8, 'Varanasi', 'SPIRITUAL', 'The eternal city of light.', 'https://images.unsplash.com/photo-1544644181-1484b3fdfc62?w=800', 7500)
+ON CONFLICT (id) DO UPDATE SET image_url = EXCLUDED.image_url;
 
 -- FLIGHTS - Covering airports from every Indian state
 INSERT INTO flights (id, airline, type, icon, departure_time, departure_code, departure_name, arrival_time, arrival_code, arrival_name, duration, stops, flight_class, price_inr, confirmed, amenities) VALUES

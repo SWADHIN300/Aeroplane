@@ -1,13 +1,134 @@
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import api from '../services/api'
 
+function TicketModal({ booking, onClose }) {
+  if (!booking) return null
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-50 flex items-center justify-center p-4"
+      onClick={onClose}
+    >
+      <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
+      <motion.div
+        initial={{ scale: 0.85, opacity: 0, y: 30 }}
+        animate={{ scale: 1, opacity: 1, y: 0 }}
+        exit={{ scale: 0.85, opacity: 0, y: 30 }}
+        transition={{ type: 'spring', duration: 0.5 }}
+        className="relative w-full max-w-lg"
+        onClick={e => e.stopPropagation()}
+      >
+        {/* Close Button */}
+        <button onClick={onClose} className="absolute -top-3 -right-3 z-10 w-8 h-8 bg-slate-800 border border-slate-600 rounded-full flex items-center justify-center text-slate-400 hover:text-white hover:border-cyan-400 transition-all">
+          <span className="material-symbols-outlined text-sm">close</span>
+        </button>
+
+        {/* Ticket Card */}
+        <div className="bg-gradient-to-br from-[#0a1628] via-[#0d1f3c] to-[#0a1628] border border-cyan-400/30 rounded-2xl overflow-hidden shadow-[0_0_60px_rgba(0,245,255,0.15)]">
+          {/* Header */}
+          <div className="bg-gradient-to-r from-cyan-400/10 via-cyan-400/5 to-transparent px-6 py-4 border-b border-cyan-400/20">
+            <div className="flex justify-between items-center">
+              <div className="flex items-center gap-2">
+                <span className="material-symbols-outlined text-cyan-400" style={{ fontVariationSettings: "'FILL' 1" }}>flight</span>
+                <span className="font-headline text-lg text-cyan-400">NexFly</span>
+              </div>
+              <div className="text-right">
+                <p className="label-caps text-[10px] text-slate-500">BOARDING PASS</p>
+                <p className="font-mono text-cyan-400 font-bold text-sm">{booking.bookingRef}</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Route */}
+          <div className="px-6 py-6">
+            <div className="flex items-center justify-between gap-4">
+              <div className="text-center">
+                <p className="font-headline text-3xl text-white">{booking.fromCode}</p>
+                <p className="text-xs text-slate-400 mt-1">{booking.fromCity}</p>
+              </div>
+              <div className="flex-1 flex flex-col items-center gap-1">
+                <p className="text-[10px] label-caps text-slate-500">{booking.duration || 'DIRECT'}</p>
+                <div className="w-full relative flex items-center">
+                  <div className="flex-1 h-[1px] border-t border-dashed border-cyan-400/40" />
+                  <span className="material-symbols-outlined text-cyan-400 text-xl mx-1 rotate-90" style={{ fontVariationSettings: "'FILL' 1" }}>flight</span>
+                  <div className="flex-1 h-[1px] border-t border-dashed border-cyan-400/40" />
+                </div>
+                <p className="text-[10px] label-caps text-cyan-400/60">{booking.flightNo}</p>
+              </div>
+              <div className="text-center">
+                <p className="font-headline text-3xl text-white">{booking.toCode}</p>
+                <p className="text-xs text-slate-400 mt-1">{booking.toCity}</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Tear line */}
+          <div className="relative flex items-center mx-2">
+            <div className="w-5 h-5 bg-black/60 rounded-full -ml-4" />
+            <div className="flex-1 border-t border-dashed border-white/10" />
+            <div className="w-5 h-5 bg-black/60 rounded-full -mr-4" />
+          </div>
+
+          {/* Details Grid */}
+          <div className="px-6 py-5">
+            <div className="grid grid-cols-3 gap-y-4 gap-x-6">
+              <div>
+                <p className="label-caps text-[10px] text-slate-500 mb-1">DATE</p>
+                <p className="font-body text-white text-sm">{booking.flightDate}</p>
+              </div>
+              <div>
+                <p className="label-caps text-[10px] text-slate-500 mb-1">TIME</p>
+                <p className="font-body text-white text-sm">{booking.flightTime || '—'}</p>
+              </div>
+              <div>
+                <p className="label-caps text-[10px] text-slate-500 mb-1">CLASS</p>
+                <p className="font-body text-white text-sm">{booking.flightClass || '—'}</p>
+              </div>
+              <div>
+                <p className="label-caps text-[10px] text-slate-500 mb-1">PASSENGER</p>
+                <p className="font-body text-white text-sm">{booking.passengerName}</p>
+              </div>
+              <div>
+                <p className="label-caps text-[10px] text-slate-500 mb-1">STATUS</p>
+                <p className={`font-bold text-sm uppercase ${booking.status === 'confirmed' ? 'text-green-400' : booking.status === 'cancelled' ? 'text-red-400' : 'text-blue-400'}`}>{booking.status}</p>
+              </div>
+              <div>
+                <p className="label-caps text-[10px] text-slate-500 mb-1">SEAT</p>
+                <p className="font-body text-white text-sm">{booking.seatNumber || '—'}</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Barcode */}
+          <div className="px-6 pb-5">
+            <div className="bg-white/5 rounded-lg p-4 flex items-center justify-between gap-4">
+              <div className="flex gap-[2px] items-end h-10">
+                {Array.from({ length: 40 }, (_, i) => (
+                  <div key={i} className="bg-cyan-400/70 rounded-sm" style={{ width: '2px', height: `${12 + Math.random() * 28}px` }} />
+                ))}
+              </div>
+              <div className="text-right">
+                <p className="font-mono text-[10px] text-slate-500">SCAN AT GATE</p>
+                <p className="font-mono text-xs text-cyan-400">{booking.bookingRef}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+    </motion.div>
+  )
+}
+
 export default function MyBookings() {
   const [tab, setTab] = useState('upcoming')
   const [bookings, setBookings] = useState([])
   const [loading, setLoading] = useState(true)
+  const [selectedTicket, setSelectedTicket] = useState(null)
   const { isAuthenticated } = useAuth()
   const navigate = useNavigate()
   const tabs = ['Upcoming', 'Completed', 'Cancelled']
@@ -157,7 +278,7 @@ export default function MyBookings() {
                       {b.status === 'confirmed' && (
                         <button onClick={() => handleCancel(b.id)} className="px-5 py-2 border border-red-400 text-red-400 label-caps text-xs hover:bg-red-400/5 transition-all rounded-lg">Cancel</button>
                       )}
-                      <button className="px-5 py-2 border border-cyan-400 text-cyan-400 label-caps text-xs hover:bg-cyan-400/5 transition-all rounded-lg flex items-center gap-2">
+                      <button onClick={() => setSelectedTicket(b)} className="px-5 py-2 border border-cyan-400 text-cyan-400 label-caps text-xs hover:bg-cyan-400/5 transition-all rounded-lg flex items-center gap-2">
                         <span className="material-symbols-outlined text-sm">confirmation_number</span> View Ticket
                       </button>
                     </div>
@@ -177,6 +298,11 @@ export default function MyBookings() {
           </div>
         )}
       </div>
+
+      {/* Ticket Modal */}
+      <AnimatePresence>
+        {selectedTicket && <TicketModal booking={selectedTicket} onClose={() => setSelectedTicket(null)} />}
+      </AnimatePresence>
     </motion.div>
   )
 }

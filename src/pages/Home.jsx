@@ -65,18 +65,19 @@ export default function Home() {
         <div className="absolute inset-0 star-field opacity-20 pointer-events-none" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-64 aurora-blur -rotate-12 pointer-events-none" />
 
-        {/* Jet Image */}
-        <div className="relative w-full max-w-[1440px] mx-auto px-8 lg:px-16">
+        {/* Commercial Plane Image */}
+        <div className="relative w-full max-w-[1440px] mx-auto px-8 lg:px-16 overflow-hidden">
           <motion.div
             initial={{ x: 200, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 1.2, ease: 'easeOut' }}
-            className="absolute top-0 -right-10 lg:right-10 pointer-events-none opacity-30 md:opacity-70 z-0"
+            className="absolute top-8 lg:top-12 -right-8 lg:right-4 pointer-events-none opacity-30 md:opacity-80 z-0 max-h-[380px] lg:max-h-[420px] overflow-hidden"
           >
             <img
-              className="w-[500px] lg:w-[600px] h-auto object-contain transform -rotate-[5deg]"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjS3cDB0jzCFDH870Un9W24ncgjETmavjk3LD52NrKwchuhS5I0qgcd-zryZc-VVQqf_iqHXgsZSOEPPo_tLb-H9oesGgSbZxjvbPuXljdfHpJFaH0SETINEegpsNfVdjPwabKrxqwbhFRZXExftsG1P_3raDSi-4-PkrZEagnpM01ZBn4W1wrcD1IC-oq6w_bYVOeIfxi3-NJGUKCNrDqrG32MXnNYWZ2scWOxKeeC_Am918kwDBGpFIdRE_Me-MfepsYN_WU8tjl"
-              alt="Futuristic jet"
+              className="w-[320px] lg:w-[480px] xl:w-[520px] h-auto object-contain drop-shadow-[0_0_40px_rgba(0,245,255,0.25)]"
+              src="/commercial-plane.png"
+              alt="Commercial aeroplane"
+              style={{ filter: 'brightness(1.05)' }}
             />
             <div className="absolute top-1/2 right-full w-[300px] h-[2px] bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent blur-sm" />
           </motion.div>
@@ -97,7 +98,7 @@ export default function Home() {
               transition={{ duration: 0.7, delay: 0.5 }}
               className="font-body text-body-lg text-nf-outline mb-12 max-w-lg"
             >
-              Experience the pinnacle of private aviation. Book direct flights to over 150 countries with NexFly's elite fleet.
+              Experience the pinnacle of air travel. Book direct flights to over 150 countries with NexFly's world-class service.
             </motion.p>
 
             {/* Search Bar */}

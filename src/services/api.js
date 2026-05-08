@@ -24,6 +24,17 @@ class ApiClient {
     try {
       const response = await fetch(url, { ...options, headers });
 
+      if (response.status === 401 || response.status === 403) {
+        // Token expired or invalid — clear auth state and redirect to login
+        const hadToken = !!this.getToken();
+        localStorage.removeItem('nexfly-token');
+        localStorage.removeItem('nexfly-user');
+        if (hadToken && window.location.pathname !== '/login') {
+          window.location.href = '/login';
+        }
+        throw new Error('Session expired. Please login again.');
+      }
+
       if (!response.ok) {
         const error = await response.json().catch(() => ({ message: 'Request failed' }));
         throw new Error(error.message || `HTTP ${response.status}`);
